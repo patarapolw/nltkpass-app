@@ -1,29 +1,11 @@
 # nltkpass-app
 
-## Project setup
-```
-npm install
-```
+Cordova/Vue-CLI app, created via <https://christos312.eu/blog/2018/11/24/vue-cli-3-cordova/>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Must be installed using NPM, not Yarn.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Building instructions
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- `npm install`
+- `npm run build`
+- `cordova run android`
