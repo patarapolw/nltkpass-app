@@ -15,7 +15,7 @@
             </v-flex>
         </v-layout>
 
-        <v-btn block color="primary" light class="mt-3">Generate password</v-btn>
+        <v-btn block color="primary" light class="mt-3" @click="generatePassword">Generate password</v-btn>
 
         <v-card class="mt-3">
             <v-card-title class="password">
@@ -28,19 +28,21 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import SelectorPlus from '../components/SelectorPlus.vue';
+import NltkPass from '../lib/NltkPass';
+import { g } from '../shared';
 
 @Component({
     components: {SelectorPlus}
 })
 export default class SimplePassGenerator extends Vue {
     private sourceItems = [
-        "brown-rare.txt"
+        "brown-rare.json"
     ];
     private wordCount = "5";
     private punctuationCount = "2";
     private digitCount = "2";
 
-    private password = "Diffusive6>ColonistOverview7)RavineOnto";
+    private password = "The generated password will be shown here.";
 
     private numberConstraint(min: number, max: number) {
         return [
@@ -48,6 +50,13 @@ export default class SimplePassGenerator extends Vue {
             (x: string) => parseInt(x) >= min || `The number must be at least ${min}.`,
             (x: string) => parseInt(x) <= max || `The number must be at most ${max}.`
         ]
+    }
+
+    private generatePassword() {
+        this.password = g.nltkPass.generatePassword(undefined,
+        parseInt(this.punctuationCount),
+        parseInt(this.digitCount),
+        parseInt(this.wordCount)).password;
     }
 }
 </script>
